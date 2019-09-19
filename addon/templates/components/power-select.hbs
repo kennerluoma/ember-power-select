@@ -15,17 +15,20 @@
   as |dropdown|}}
 
   {{#dropdown.trigger
-    role=(readonly triggerRole)
     tagName=(readonly _triggerTagName)
-    ariaDescribedBy=(readonly ariaDescribedBy)
-    ariaInvalid=(readonly ariaInvalid)
+    role=(readonly triggerRole)
+    aria-haspopup="listbox"
+    aria-controls=(readonly optionsId)
     ariaLabel=(readonly ariaLabel)
     ariaLabelledBy=(readonly ariaLabelledBy)
+    ariaDescribedBy=(readonly ariaDescribedBy)
+    ariaInvalid=(readonly ariaInvalid)
     ariaRequired=(readonly required)
-    title=(readonly title)
-    class=(readonly concatenatedTriggerClasses)
-    extra=(readonly extra)
+
     id=(readonly triggerId)
+    class=(readonly concatenatedTriggerClasses)
+    title=(readonly title)
+    extra=(readonly extra)
     eventType=(or eventType "mousedown")
     onKeyDown=(action "onTriggerKeydown")
     onFocus=(action "onTriggerFocus")
@@ -54,6 +57,9 @@
 
   {{#dropdown.content _contentTagName=_contentTagName class=(readonly concatenatedDropdownClasses)}}
     {{component beforeOptionsComponent
+      role="listbox"
+      aria-labelledby=(readonly triggerId)
+
       animationEnabled=(readonly animationEnabled)
       extra=(readonly extra)
       listboxId=(readonly optionsId)
